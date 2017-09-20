@@ -1,0 +1,218 @@
+// Variables
+
+$main-color: #dab6ff;
+
+$yellow-option-color: #ffffb6;
+$green-option-color: #b7ffb6;
+$orange-option-color: #ffdab6;
+
+$yellow-option-color-selected: #ffff6a;
+$green-option-color-selected: #6cff6a;
+$orange-option-color-selected: #ffb36a;
+
+$bubble-width: 80%;
+$bubble-min-width: 450px;
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Droid Sans', sans-serif;
+  display: flex;
+  color: black;
+  a {
+    color: inherit;
+    text-decoration: none;
+    &:focus {
+      color: inherit;
+    }
+  }
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 120px;
+  background-color: #e8e8e8;
+  position: relative;
+  .bot-info {
+    text-align: center;
+    padding: 10px;
+  }
+  .account {
+    width: 100%;
+    height: 80px;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: $main-color;
+  }
+}
+
+.primary {
+  display: flex;
+  flex: 100%;
+  flex-direction: column;
+  .navbar {
+    flex: 60px;
+    max-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+    .option {
+      width: 120px;
+      text-align: center;
+      padding: 10px;
+    }
+  }
+  .titles {
+    display: flex;
+    text-align: center;
+    .box-title {
+      flex: 50%;
+      font-size: 1.3em;
+      padding: 10px;
+      background-color: #f5f5f5;
+    }
+  }
+  .main {
+    flex: auto;
+    display: flex;
+    background-color: #f5f5f5;
+    .box {
+      flex: 50%;
+      position: relative;
+      overflow-y: hidden;
+      .content {
+        position: absolute;
+        padding: 10px;
+      }
+      &.builder {
+        .type-options {
+          background-color: $green-option-color;
+          &.selected {
+            background-color: $green-option-color-selected;
+          }
+        }
+        .type-s-ans {
+          background-color: $yellow-option-color;
+          &.selected {
+            background-color: $yellow-option-color-selected;
+          }
+        }
+        .type-a-ans {
+          background-color: $orange-option-color;
+          &.selected {
+            background-color: $orange-option-color-selected;
+          }
+        }
+        .content {
+          .bubble {
+            position: relative;
+            margin-bottom: 20px;
+            width: $bubble-width;
+            min-width: $bubble-min-width;
+            .message {
+              background-color: white;
+              padding: 10px;
+            }
+            .action {
+              position: absolute;
+              top: 5px;
+              font-size: 19px;
+              display: flex;
+              flex-direction: column;
+              .button {
+                display: inline;
+              }
+            }
+            &.sender {
+              float: left;
+              .sender-options {
+                display: flex;
+                text-align: center;
+                .option {
+                  width: 33.33%;
+                  padding: 5px;
+                }
+              }
+              .action {
+                right: -25px;
+              }
+            }
+            &.receiver {
+              float: right;
+              padding: 10px;
+              border-radius: 10px;
+              text-align: center;
+              .action {
+                left: -25px;
+              }
+              .receiver-title {
+                margin-bottom: 5px;
+              }
+              .receiver-options {
+                display: flex;
+                .option {
+                  flex: auto;
+                  border-right: 1px solid black;
+                  &:last-of-type {
+                    border-right: 0px solid black;
+                  }
+                  i {
+                    display: block;
+                  }
+                }
+              }
+            }
+          }
+        }
+        .progress {
+          position: absolute;
+          bottom: 0;
+          padding: 10px;
+        }
+      }
+      &.viewer {
+        .content {
+          display: flex;
+          flex-direction: column;
+          background-color: white;
+          font-family: Helvetica Neue, Segoe UI, Helvetica, Arial, sans-serif;
+          .block {
+            flex: 50%;
+          }
+          .bubble {
+            width: $bubble-width;
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 10px;
+            &.sender {
+              float: left;
+              background-color: #F1F0F0;
+            }
+            &.receiver {
+              float: right;
+              color: white;
+              background-color: #0084FF;
+            }
+          }
+        }
+      }
+    }
+  }
+}
